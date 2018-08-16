@@ -23,6 +23,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x_it.h"
+#include "usart3.h"
 
 /** @addtogroup STM32F10x_StdPeriph_Template
   * @{
@@ -135,6 +136,18 @@ void PendSV_Handler(void)
 void SysTick_Handler(void)
 {
 }
+
+// 串口3(MCU6050六轴模块)中断服务函数
+void DEBUG_USART_IRQHandler(void) 
+{
+  uint8_t ucTemp;
+	if(USART_GetITStatus(DEBUG_USARTx,USART_IT_RXNE)!=RESET)
+	{		
+		ucTemp = USART_ReceiveData(DEBUG_USARTx);
+    USART_SendData(DEBUG_USARTx,ucTemp);    
+	}	 
+}
+
 
 /******************************************************************************/
 /*                 STM32F10x Peripherals Interrupt Handlers                   */
