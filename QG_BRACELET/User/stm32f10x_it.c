@@ -24,6 +24,11 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x_it.h"
 #include "usart3.h"
+#include "gprs.h"
+#include <stdio.h>
+
+extern char Uart2_Buf[100];
+extern uint32_t First_Int;
 
 /** @addtogroup STM32F10x_StdPeriph_Template
   * @{
@@ -136,6 +141,26 @@ void PendSV_Handler(void)
 void SysTick_Handler(void)
 {
 }
+/*******************************************************************************
+* 函数名  : USART2_IRQHandler
+* 描述    : 串口2中断服务程序
+* 输入    : 无
+* 返回    : 无 
+* 说明    : 
+*******************************************************************************/
+void USART2_IRQHandler(void)                	
+{
+	u8 Res=0;
+	Res = USART_ReceiveData(USART2);
+	printf("%c",Res);
+	Uart2_Buf[First_Int] = Res;  	  //将接收到的字符串存到缓存中
+	First_Int++;                	  //缓存指针向后移动
+	if(First_Int > Buf2_Max)       	  //如果缓存满,将缓存指针指向缓存的首地址
+	{
+		First_Int = 0;
+	}
+} 	
+
 
 // 串口3(MCU6050六轴模块)中断服务函数
 void DEBUG_USART_IRQHandler(void) 

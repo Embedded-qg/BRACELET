@@ -1,7 +1,7 @@
 #include "power.h"
 extern void delay_ms(u16 nms);
 //自己写的测试用的
-void LED_GPIO_Config()
+void LED_TEST_GPIO_Config()
 {
 	GPIO_InitTypeDef GPIO_InitStruct;
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
