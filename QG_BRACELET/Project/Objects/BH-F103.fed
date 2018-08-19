@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5050106: Last Updated: Sat Aug 18 09:22:45 2018
+;#<FEEDBACK># ARM Linker, 5050106: Last Updated: Sun Aug 19 08:36:25 2018
 ;VERSION 0.2
 ;FILE core_cm3.o
 __REV16 <= USED 0
@@ -8,8 +8,15 @@ __get_PSP <= USED 0
 __set_MSP <= USED 0
 __set_PSP <= USED 0
 ;FILE gprs.o
+CLR_Buf <= USED 0
+Find <= USED 0
+Send_data_and_error_deal <= USED 0
+Wait_CREG <= USED 0
+check_status <= USED 0
+send_data_to_server <= USED 0
 ;FILE main.o
 ;FILE misc.o
+NVIC_Init <= USED 0
 NVIC_SetVectorTable <= USED 0
 NVIC_SystemLPConfig <= USED 0
 ;FILE power.o
@@ -208,6 +215,7 @@ GPIO_ETH_MediaInterfaceConfig <= USED 0
 GPIO_EXTILineConfig <= USED 0
 GPIO_EventOutputCmd <= USED 0
 GPIO_EventOutputConfig <= USED 0
+GPIO_Init <= USED 0
 GPIO_PinLockConfig <= USED 0
 GPIO_PinRemapConfig <= USED 0
 GPIO_ReadInputData <= USED 0
@@ -274,12 +282,17 @@ PWR_WakeUpPinCmd <= USED 0
 ;FILE stm32f10x_rcc.o
 RCC_ADCCLKConfig <= USED 0
 RCC_AHBPeriphClockCmd <= USED 0
+RCC_APB1PeriphClockCmd <= USED 0
+RCC_APB1PeriphResetCmd <= USED 0
+RCC_APB2PeriphClockCmd <= USED 0
+RCC_APB2PeriphResetCmd <= USED 0
 RCC_AdjustHSICalibrationValue <= USED 0
 RCC_BackupResetCmd <= USED 0
 RCC_ClearFlag <= USED 0
 RCC_ClearITPendingBit <= USED 0
 RCC_ClockSecuritySystemCmd <= USED 0
 RCC_DeInit <= USED 0
+RCC_GetClocksFreq <= USED 0
 RCC_GetFlagStatus <= USED 0
 RCC_GetITStatus <= USED 0
 RCC_GetSYSCLKSource <= USED 0
@@ -458,11 +471,16 @@ TIM_TimeBaseStructInit <= USED 0
 TIM_UpdateDisableConfig <= USED 0
 TIM_UpdateRequestConfig <= USED 0
 ;FILE stm32f10x_usart.o
+USART_ClearFlag <= USED 0
 USART_ClearITPendingBit <= USED 0
 USART_ClockInit <= USED 0
 USART_ClockStructInit <= USED 0
+USART_Cmd <= USED 0
 USART_DMACmd <= USED 0
+USART_DeInit <= USED 0
 USART_HalfDuplexCmd <= USED 0
+USART_ITConfig <= USED 0
+USART_Init <= USED 0
 USART_IrDACmd <= USED 0
 USART_IrDAConfig <= USED 0
 USART_LINBreakDetectLengthConfig <= USED 0
@@ -490,5 +508,14 @@ WWDG_SetWindowValue <= USED 0
 ;FILE system_stm32f10x.o
 SystemCoreClockUpdate <= USED 0
 ;FILE systick.o
+delay_ms <= USED 0
 delay_us <= USED 0
 ;FILE usart.o
+UART1_SendString <= USED 0
+UART2_SendString <= USED 0
+UART2_Send_AT_Command <= USED 0
+UART2_Send_AT_Command_End <= USED 0
+UART2_Send_Command <= USED 0
+UART2_Send_Command_END <= USED 0
+USART1_Init_Config <= USED 0
+USART2_Init_Config <= USED 0
