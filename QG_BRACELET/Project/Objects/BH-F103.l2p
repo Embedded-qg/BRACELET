@@ -1,6 +1,5 @@
 --cpu Cortex-M3
 ".\objects\startup_stm32f10x_hd.o"
-".\objects\core_cm3.o"
 ".\objects\system_stm32f10x.o"
 ".\objects\misc.o"
 ".\objects\stm32f10x_adc.o"
@@ -31,6 +30,10 @@
 ".\objects\usart.o"
 ".\objects\power.o"
 ".\objects\gprs.o"
+".\objects\algorithm.o"
+".\objects\iic1.o"
+".\objects\max30102.o"
+".\objects\max30102_main.o"
 --library_type=microlib --strict --scatter ".\Objects\BH-F103.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

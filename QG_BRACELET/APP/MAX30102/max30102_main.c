@@ -49,7 +49,6 @@ void max30102_main(void)
    if(excute_once)                //该判断语句下只执行一次
    {
 		excute_once = 0;
-		SysTick_Init(72);	    	 //延时函数初始化,时钟频率为72M	  
 		max30102_init(); 			 //MAX30102初始化
 		printf("max30102 is initlized!");
 	

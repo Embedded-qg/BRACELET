@@ -1,12 +1,6 @@
-;#<FEEDBACK># ARM Linker, 5050106: Last Updated: Sun Aug 19 08:36:25 2018
+;#<FEEDBACK># ARM Linker, 5050106: Last Updated: Tue Aug 21 16:00:47 2018
 ;VERSION 0.2
-;FILE core_cm3.o
-__REV16 <= USED 0
-__REVSH <= USED 0
-__get_MSP <= USED 0
-__get_PSP <= USED 0
-__set_MSP <= USED 0
-__set_PSP <= USED 0
+;FILE algorithm.o
 ;FILE gprs.o
 CLR_Buf <= USED 0
 Find <= USED 0
@@ -14,7 +8,18 @@ Send_data_and_error_deal <= USED 0
 Wait_CREG <= USED 0
 check_status <= USED 0
 send_data_to_server <= USED 0
+;FILE iic1.o
+IIC_ReadBytes <= USED 0
+IIC_Read_One_Byte <= USED 0
+IIC_WriteBytes <= USED 0
+IIC_Write_One_Byte <= USED 0
 ;FILE main.o
+;FILE max30102.o
+max30102_FIFO_ReadWords <= USED 0
+maxim_max30102_read_fifo <= USED 0
+maxim_max30102_read_reg <= USED 0
+maxim_max30102_write_reg <= USED 0
+;FILE max30102_main.o
 ;FILE misc.o
 NVIC_Init <= USED 0
 NVIC_SetVectorTable <= USED 0
@@ -215,7 +220,6 @@ GPIO_ETH_MediaInterfaceConfig <= USED 0
 GPIO_EXTILineConfig <= USED 0
 GPIO_EventOutputCmd <= USED 0
 GPIO_EventOutputConfig <= USED 0
-GPIO_Init <= USED 0
 GPIO_PinLockConfig <= USED 0
 GPIO_PinRemapConfig <= USED 0
 GPIO_ReadInputData <= USED 0
@@ -284,7 +288,6 @@ RCC_ADCCLKConfig <= USED 0
 RCC_AHBPeriphClockCmd <= USED 0
 RCC_APB1PeriphClockCmd <= USED 0
 RCC_APB1PeriphResetCmd <= USED 0
-RCC_APB2PeriphClockCmd <= USED 0
 RCC_APB2PeriphResetCmd <= USED 0
 RCC_AdjustHSICalibrationValue <= USED 0
 RCC_BackupResetCmd <= USED 0
@@ -509,7 +512,6 @@ WWDG_SetWindowValue <= USED 0
 SystemCoreClockUpdate <= USED 0
 ;FILE systick.o
 delay_ms <= USED 0
-delay_us <= USED 0
 ;FILE usart.o
 UART1_SendString <= USED 0
 UART2_SendString <= USED 0
