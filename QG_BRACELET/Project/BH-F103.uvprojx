@@ -365,7 +365,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Libraries\CMSIS;..\Libraries\STM32F10x_StdPeriph_Driver\inc;..\User;..\APP\GPS;..\APP\MPU6050;..\APP\POWER;..\PUBLIC;..\APP\GPRS;..\APP</IncludePath>
+              <IncludePath>..\Libraries\CMSIS;..\Libraries\STM32F10x_StdPeriph_Driver\inc;..\User;..\APP\GPS;..\APP\MPU6050;..\APP\POWER;..\PUBLIC;..\APP\GPRS;..\APP;..\APP\MAX30102</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -419,14 +419,14 @@
           <GroupName>CMSIS</GroupName>
           <Files>
             <File>
-              <FileName>core_cm3.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Libraries\CMSIS\core_cm3.c</FilePath>
-            </File>
-            <File>
               <FileName>system_stm32f10x.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Libraries\CMSIS\system_stm32f10x.c</FilePath>
+            </File>
+            <File>
+              <FileName>core_cm3.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Libraries\CMSIS\core_cm3.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -611,12 +611,36 @@
           </Files>
         </Group>
         <Group>
+<<<<<<< HEAD
           <GroupName>GPS</GroupName>
           <Files>
             <File>
               <FileName>gps.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\APP\GPS\gps.c</FilePath>
+=======
+          <GroupName>MAX30102</GroupName>
+          <Files>
+            <File>
+              <FileName>algorithm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\MAX30102\algorithm.c</FilePath>
+            </File>
+            <File>
+              <FileName>IIC1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\MAX30102\IIC1.c</FilePath>
+            </File>
+            <File>
+              <FileName>max30102.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\MAX30102\max30102.c</FilePath>
+            </File>
+            <File>
+              <FileName>max30102_main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\MAX30102\max30102_main.c</FilePath>
+>>>>>>> ec5315c1266a0f5ba014bd8d0ff5368623529629
             </File>
           </Files>
         </Group>
