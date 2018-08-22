@@ -1,6 +1,6 @@
 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\Libraries\CMSIS -I..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\User -I..\APP\GPS -I..\APP\MPU6050 -I..\APP\POWER -I..\PUBLIC -I..\APP\GPRS -I..\APP -I..\APP\MAX30102
--I E:\—ßœ∞\QG ÓºŸ≈‡—µ\÷’º´øº∫À\BRACELET\QG_BRACELET\Project\RTE
--I E:\C\keil5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include
--I E:\C\keil5\ARM\CMSIS\Include
+-I D:\BRACELET\QG_BRACELET\Project\RTE
+-I E:\KeilMDK\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include
+-I E:\KeilMDK\ARM\CMSIS\Include
 -D__UVISION_VERSION="514" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER
 -o .\objects\stm32f10x_rcc.o --omf_browse .\objects\stm32f10x_rcc.crf --depend .\objects\stm32f10x_rcc.d --feedback ".\Objects\BH-F103.fed" "..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.c"
