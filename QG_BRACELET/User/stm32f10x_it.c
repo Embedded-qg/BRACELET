@@ -25,10 +25,21 @@
 #include "stm32f10x_it.h"
 #include "usart3.h"
 #include "gprs.h"
+#include "gps.h"
 #include <stdio.h>
+#include <string.h>
 
+#define USART1_REC_LEN 200
+
+	
 extern char Uart2_Buf[100];
 extern uint32_t First_Int;
+extern GPS_Data_Typedef GPS_Data;
+
+char USART1_RX_BUF[USART1_REC_LEN];     //接收缓冲,最大USART_REC_LEN个字节.
+uint16_t USART_RX_STA=0;       //接收状态标记	
+u16 point1 = 0;
+
 
 /** @addtogroup STM32F10x_StdPeriph_Template
   * @{
@@ -142,6 +153,42 @@ void SysTick_Handler(void)
 {
 }
 /*******************************************************************************
+* 函数名  : USART1_IRQHandler
+* 描述    : 串口1中断服务程序
+* 输入    : 无
+* 返回    : 无 
+* 说明    : 
+*******************************************************************************/
+void USART1_IRQHandler(void)     
+{
+	uint8_t Res;
+	if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET) 
+	{
+		Res =USART_ReceiveData(USART1);//(USART1->DR);	//读取接收到的数据
+		if(Res == '$')
+		{
+			point1 = 0;	
+		}
+		USART1_RX_BUF[point1++] = Res;
+		//确定是否收到"GPRMC/GNRMC"这一帧数据
+		if(USART1_RX_BUF[0] == '$' && USART1_RX_BUF[4] == 'M' && USART1_RX_BUF[5] == 'C')		
+		{
+			if(Res == '\n')		
+			{
+				memset(GPS_Data.GPS_Buffer, 0, GPS_Buffer_Length);      //清空
+				memcpy(GPS_Data.GPS_Buffer, USART1_RX_BUF, point1); 	//保存数据
+				GPS_Data.isGetData = true;
+				point1 = 0;
+				memset(USART1_RX_BUF, 0, USART1_REC_LEN);      //清空		
+			}
+			if(point1 >= USART1_REC_LEN)
+			{
+				point1 = USART1_REC_LEN;
+			}	
+		}
+	}
+}	
+/*******************************************************************************
 * 函数名  : USART2_IRQHandler
 * 描述    : 串口2中断服务程序
 * 输入    : 无
@@ -151,14 +198,28 @@ void SysTick_Handler(void)
 void USART2_IRQHandler(void)                	
 {
 	u8 Res=0;
-	Res = USART_ReceiveData(USART2);
+	if(USART_GetITStatus(USART2,USART_IT_RXNE)!=RESET)
+	{		
+		
+		Res = USART_ReceiveData(USART2);
+		//printf("接收到回复:%c\r\n",Res);
+		printf("%c",Res);
+		Uart2_Buf[First_Int] = Res;  	  //将接收到的字符串存到缓存中
+		First_Int++;                	  //缓存指针向后移动
+		if(First_Int >= Buf2_Max)       	  //如果缓存满,将缓存指针指向缓存的首地址
+		{
+			First_Int = 0;
+		}  
+	}
+	
+	/*Res = USART_ReceiveData(USART2);
 	printf("%c",Res);
 	Uart2_Buf[First_Int] = Res;  	  //将接收到的字符串存到缓存中
 	First_Int++;                	  //缓存指针向后移动
 	if(First_Int > Buf2_Max)       	  //如果缓存满,将缓存指针指向缓存的首地址
 	{
 		First_Int = 0;
-	}
+	}*/
 } 	
 
 

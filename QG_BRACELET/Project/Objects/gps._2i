@@ -3,4 +3,4 @@
 -I E:\KeilMDK\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include
 -I E:\KeilMDK\ARM\CMSIS\Include
 -D__UVISION_VERSION="514" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER
--o .\objects\usart.o --omf_browse .\objects\usart.crf --depend .\objects\usart.d --feedback ".\Objects\BH-F103.fed" "..\PUBLIC\usart.c"
+-o .\objects\gps.o --omf_browse .\objects\gps.crf --depend .\objects\gps.d --feedback ".\Objects\BH-F103.fed" "..\APP\GPS\gps.c"

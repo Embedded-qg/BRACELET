@@ -91,7 +91,7 @@ int send_data_to_server(char *server_IP_and_port,char *content)
 		return 1;
 	}
 	
-	ret = UART2_Send_AT_Command("AT+CGATT=1","OK",3,50*7);//附着网络
+	ret = UART2_Send_AT_Command("AT+CGATT=1","OK",5,50*7);//附着网络
 	if(ret == 0)
 	{
 		return AT_CGATT_ERROR;
@@ -204,7 +204,7 @@ u8 Wait_CREG(u8 query_times)
 
 uint8_t Find(char *a)
 { 
-
+//	printf("Uart2_Buf:%s,a:%s\r\n",Uart2_Buf,a);
 	if(strstr(Uart2_Buf, a)!=NULL)
 	{
 		return 1;
@@ -224,14 +224,15 @@ uint8_t Find(char *a)
 * 返回   : 错误符号
 * 注意   : 出错处理
 *******************************************************************************/
-void Send_data_and_error_deal(char *TCP_IP_port,char *Data)
+void Send_data_and_error_deal(char *TCP_IP_Port,char *Data)
 {
 	int  ret;			//用来标记状态
 	memset(error_result,'\0',20);
+	
 	ret = check_status();
 	if(ret == 1)
 	{
-			ret = send_data_to_server(TCP_IP_port,Data);//发送数据到服务器					
+			ret = send_data_to_server(TCP_IP_Port,Data);//发送数据到服务器					
 	}
 	if(ret == 1)
 	{
@@ -245,11 +246,17 @@ void Send_data_and_error_deal(char *TCP_IP_port,char *Data)
 	}
 	else //数据发送失败，此时可能连接时间过长导致的失败，这样就断开连接，然后就可以继续连接上了
 	{
-		sprintf(error_result,"错误代码 : %d\r\n",ret);
-		printf("错误代码 : %d\r\n",ret);
-		UART1_SendString(error_result);
+
+		printf("error_code: %d\r\n",ret);
 		UART2_Send_AT_Command("AT+CIPCLOSE","OK",3,150);//关闭链接
-	
 	}
+	
 }
+
+
+
+
+
+
+
 

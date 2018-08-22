@@ -31,6 +31,7 @@
 ".\objects\usart.o"
 ".\objects\power.o"
 ".\objects\gprs.o"
+".\objects\gps.o"
 --library_type=microlib --strict --scatter ".\Objects\BH-F103.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

@@ -1,11 +1,17 @@
 #include "usart.h"
 #include "SysTick.h"
 #include <stdio.h>
-
+/*********************定义变量**********************************************/
 vu8 Usart1_R_Buff[USART1_REC_MAXLEN];	//串口1数据接收缓冲区 
 vu8 Usart1_R_State=0;					//串口1接收状态
 vu16 Usart1_R_Count=0;					//当前接收数据的字节数 	  
+/***************************************************************************/
+
+/********************声明外部函数*******************************************/
 extern void CLR_Buf(void);
+extern u8 Find(char *a);
+/****************************************************************************/
+
 // 重定向到串口1
 int fputc(int ch,FILE *p)  //函数默认的，在使用printf函数时自动调用
 {
@@ -62,7 +68,7 @@ void USART1_Init_Config(u32 bound)
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			//IRQ通道使能
 	NVIC_Init(&NVIC_InitStructure);							//根据指定的参数初始化VIC寄存器 
 
-	//USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);			//使能串口1接收中断
+	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);			//使能串口1接收中断
 
 	USART_Cmd(USART1, ENABLE);                    			//使能串口 
 	USART_ClearFlag(USART1, USART_FLAG_TC);					//清除发送完成标志
@@ -85,19 +91,6 @@ void UART1_SendString(char* s)
 		USART_SendData(USART1 ,*s++);//发送当前字符
 	}
 }
-
-/*******************************************************************************
-* 函数名  : USART1_IRQHandler
-* 描述    : 串口1中断服务程序
-* 输入    : 无
-* 返回    : 无 
-* 说明    : 1)、只启动了USART1中断接收，未启动USART1中断发送。
-*           2)、接收到0x0d 0x0a(回车、"\r\n")代表帧数据接收完成
-*******************************************************************************/
-void USART1_IRQHandler(void)                	
-{
-
-} 	
 
 
 
@@ -188,7 +181,7 @@ void UART2_Send_Command(char* s)
 * 返回   : 
 * 注意   : 
 *******************************************************************************/
-extern u8 Find(char *a);
+
 
 u8 UART2_Send_AT_Command(char *b,char *a,u8 wait_time,u32 interval_time)         
 {

@@ -610,6 +610,16 @@
             </File>
           </Files>
         </Group>
+        <Group>
+          <GroupName>GPS</GroupName>
+          <Files>
+            <File>
+              <FileName>gps.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\GPS\gps.c</FilePath>
+            </File>
+          </Files>
+        </Group>
       </Groups>
     </Target>
   </Targets>

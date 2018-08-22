@@ -3,9 +3,10 @@
 
 #include "stm32f10x.h"
 
-#define Buf2_Max 	  					100 //串口2缓存长度
-#define STABLE_TIMES  				10  //等待系统上电后的稳定
-#define Server_IP_port 		"119.29.223.91,6666"
+#define Buf2_Max 	  							100 //串口2缓存长度
+#define STABLE_TIMES  						10  //等待系统上电后的稳定
+#define Serve_IP_TCP_Port					"39.108.110.121,10001"
+//#define Serve_IP_TCP_Port					"119.29.223.91,6666"
 
 //错误返回的情况
 #define COMMUNITE_ERROR       -1 
